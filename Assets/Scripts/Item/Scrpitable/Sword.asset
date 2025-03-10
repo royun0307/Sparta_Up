@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: "\uAC80"
   description: "\uACF5\uACA9\uD560\uC218\uC788\uB2E4."
+  value: 0
   type: 1
   icon: {fileID: 21300000, guid: 4f2f320a217307a48a107491b1d17ebb, type: 3}
   dropPrefab: {fileID: 4434938339831413391, guid: 9608b44d75628a14580b6266845687a8, type: 3}
   canStack: 0
   maxStackAmount: 0
+  equipPrefab: {fileID: 3706275061650124001, guid: a184494c3fa5aa94093ceebe81295f82, type: 3}

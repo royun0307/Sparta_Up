@@ -11,7 +11,6 @@ public class JumpStation : MonoBehaviour
         if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
         {
             controller.GetComponent<Rigidbody>().AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
-            Debug.Log(1);
         }
     }
 }

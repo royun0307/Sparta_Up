@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface IDamgable
+{
+    void TakePhysicalDamage(int damage);
+}
 public class PlayerCondition : MonoBehaviour
 {
     public UICondition uiCondition;
@@ -44,5 +48,18 @@ public class PlayerCondition : MonoBehaviour
     public void Die()
     {
         Debug.Log("플레이어가 죽었다.");
+    }
+    
+    public void Skill(float amount, float time)
+    {
+        CharacterManager.Instance.Player.controller.moveSpeed += amount;
+        StartCoroutine(SkillEnd(amount, time));
+    }
+
+    IEnumerator SkillEnd(float amount, float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        CharacterManager.Instance.Player.controller.moveSpeed -= amount;
     }
 }
