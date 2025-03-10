@@ -22,7 +22,11 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool canLook = true;
 
+    public Action inventory;
+
     private Rigidbody rigidbody;
+
+    public GameObject hitCrosshair; 
 
     private void Awake()
     {
@@ -68,8 +72,13 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started && IsGrounded())
         {
-            rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+            Jump(jumpPower);
         }
+    }
+
+    public void Jump(float power)
+    {
+        rigidbody.AddForce(Vector2.up * power, ForceMode.Impulse);
     }
 
     private void Move()
@@ -111,9 +120,30 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    public void ToggleCursor(bool toggle)
+    public void OnInventoryButton(InputAction.CallbackContext context)
     {
+        if (context.phase == InputActionPhase.Started)
+        {
+            inventory?.Invoke();
+            ToggleCursor();
+        }
+    }
+
+    public void ToggleCursor()
+    {
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
+    }
+
+    public void Attack()
+    {
+        hitCrosshair.SetActive(true);
+        Invoke("EndAttack", 0.5f);
+    }
+
+    public void EndAttack()
+    {
+        hitCrosshair.SetActive(false);
     }
 }
