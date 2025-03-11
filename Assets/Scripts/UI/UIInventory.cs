@@ -205,7 +205,7 @@ public class UIInventory : MonoBehaviour
     }
     public void OnEquipButton()
     {
-        if (slots[curEquipIndex].equipped)
+        if (slots[curEquipIndex].equipped && slots[curEquipIndex].item.type == slots[selectedItemIndex].item.type)
         {
             UnEquip(curEquipIndex);
         }
@@ -221,7 +221,8 @@ public class UIInventory : MonoBehaviour
     void UnEquip(int index)
     {
         slots[index].equipped = false;
-        CharacterManager.Instance.Player.equip.UnEquip();
+        int num = slots[index].item.type == ItemType.Weapon ? 0 : 1;
+        CharacterManager.Instance.Player.equip.UnEquip(num);
         UpdateUI();
 
         if (selectedItemIndex == index)
