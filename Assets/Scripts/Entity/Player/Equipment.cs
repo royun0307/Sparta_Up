@@ -16,9 +16,9 @@ public class Equipment : MonoBehaviour
         condition = CharacterManager.Instance.Player.condition;
     }
 
-    public void EquipNew(ItemData data)
+    public void EquipNew(ItemData data)//장비 착용
     {
-        int num = data.type == ItemType.Weapon ? 0 : 1;
+        int num = data.type == ItemType.Weapon ? 0 : 1;//0이면 무기 1이면 방어구
         UnEquip(num);
         if (num == 0)
         {
@@ -33,7 +33,7 @@ public class Equipment : MonoBehaviour
 
     public void UnEquip(int num)
     {
-        if (num == 0)
+        if (num == 0)//0이면 무기 1이면 방어구
         {
             if (curEquipWeapon != null)
             {

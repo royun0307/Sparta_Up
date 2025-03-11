@@ -140,13 +140,13 @@ public class PlayerController : MonoBehaviour
         canLook = !toggle;
     }
 
-    public void Attack()
+    public void Attack()//공격
     {
         hitCrosshair.SetActive(true);
         Invoke("EndAttack", 0.5f);
     }
 
-    public void EndAttack()
+    public void EndAttack()//공격 종료
     {
         hitCrosshair.SetActive(false);
     }

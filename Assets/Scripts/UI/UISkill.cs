@@ -11,7 +11,7 @@ public class UISkill : MonoBehaviour
         uISkills = GetComponentsInChildren<UISkillIcon>();
     }
 
-    public void UseSkill(ItemData item, float time)
+    public void UseSkill(ItemData item, float time)//스킬아이템 사용
     {
         UISkillIcon emptySkill = GetEmptySkill();
         if (emptySkill != null)
@@ -23,7 +23,7 @@ public class UISkill : MonoBehaviour
         return;
     }
 
-    public UISkillIcon GetEmptySkill()
+    public UISkillIcon GetEmptySkill()//스킬 아이콘 빈자리가 있는지 여부
     {
         for (int i = 0; i < uISkills.Length; i++) 
         {

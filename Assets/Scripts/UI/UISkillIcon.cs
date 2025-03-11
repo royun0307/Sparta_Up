@@ -33,7 +33,7 @@ public class UISkillIcon : MonoBehaviour
         }
     }
 
-    public void UseSkill(float time)
+    public void UseSkill(float time)//스킬 아이템 사용
     {
         isUse = true;
         skill.gameObject.SetActive(true);
@@ -41,7 +41,7 @@ public class UISkillIcon : MonoBehaviour
         maxSkillTime = curSkillTime = time;
     }
 
-    public void EndSkill()
+    public void EndSkill()//스킬 아이템 종료
     {
         item = null;
         skillTime.fillAmount = 0;
@@ -49,7 +49,7 @@ public class UISkillIcon : MonoBehaviour
         skill.gameObject.SetActive(false);
     }
 
-    public float GetPercentage()
+    public float GetPercentage()//0 에서 1로 증가
     {
         return  (maxSkillTime - curSkillTime) / maxSkillTime;
     }

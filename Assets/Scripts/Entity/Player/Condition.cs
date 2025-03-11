@@ -21,12 +21,12 @@ public class Condition : MonoBehaviour
         SetIsFull();
     }
 
-    public void Add(float amount)
+    public void Add(float amount)//값 증가
     {
         curValue = Mathf.Min(curValue + amount, maxValue);
     }
 
-    public void Substract(float amount) 
+    public void Substract(float amount)//값 감소
     {
         curValue = Mathf.Max(curValue - amount, 0.0f);
     }
@@ -36,7 +36,7 @@ public class Condition : MonoBehaviour
         return curValue / maxValue;
     }
 
-    public void SetIsFull()
+    public void SetIsFull()//값이 최대치인지 여부
     {
         isFull = (curValue == maxValue);
     }

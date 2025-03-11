@@ -22,7 +22,7 @@ public class PlayerCondition : MonoBehaviour
     {
         stamina.Add(stamina.passiveValue * Time.deltaTime);
 
-        if(!health.isFull && Time.time - lastHealTime >= healRate)
+        if(!health.isFull && Time.time - lastHealTime >= healRate)//체력이 최대치가 아니면 배고픔을 소모해 체려 회복
         {
             lastHealTime = Time.time;
             Heal(healByHunger);
@@ -59,13 +59,13 @@ public class PlayerCondition : MonoBehaviour
         return true;
     }
 
-    public void Skill(float amount, float time)
+    public void Skill(float amount, float time)//스킬 시전
     {
         CharacterManager.Instance.Player.controller.moveSpeed += amount;
         StartCoroutine(SkillEnd(amount, time));
     }
 
-    IEnumerator SkillEnd(float amount, float time)
+    IEnumerator SkillEnd(float amount, float time)//스킬 종료
     {
         yield return new WaitForSeconds(time);
 

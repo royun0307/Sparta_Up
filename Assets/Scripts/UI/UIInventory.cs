@@ -26,6 +26,7 @@ public class UIInventory : MonoBehaviour
     private PlayerController controller;
     private PlayerCondition condition;
     public UISkill uiSkill;
+
     private void Start()
     {
         controller = CharacterManager.Instance.Player.controller;
@@ -178,7 +179,7 @@ public class UIInventory : MonoBehaviour
             RemoveSelctedItem();
         }
         else if (selectedItem.type == ItemType.Skill) {
-            //스킬시전 시간 변수 추가
+            //스킬시전 시간 변수 추가 예정
             uiSkill.UseSkill(selectedItem, 5f);
             condition.Skill(selectedItem.value, 5f);
             RemoveSelctedItem();
@@ -205,7 +206,7 @@ public class UIInventory : MonoBehaviour
     }
     public void OnEquipButton()
     {
-        if (slots[curEquipIndex].equipped && slots[curEquipIndex].item.type == slots[selectedItemIndex].item.type)
+        if (slots[curEquipIndex].equipped && slots[curEquipIndex].item.type == slots[selectedItemIndex].item.type)//장착중인 아이템이 선택된 아이템과 타입이 같으면
         {
             UnEquip(curEquipIndex);
         }
@@ -221,7 +222,7 @@ public class UIInventory : MonoBehaviour
     void UnEquip(int index)
     {
         slots[index].equipped = false;
-        int num = slots[index].item.type == ItemType.Weapon ? 0 : 1;
+        int num = slots[index].item.type == ItemType.Weapon ? 0 : 1;//0이면 Weapon 1이면 Armor
         CharacterManager.Instance.Player.equip.UnEquip(num);
         UpdateUI();
 
@@ -234,10 +235,5 @@ public class UIInventory : MonoBehaviour
     public void OnUpEquipButton()
     {
         UnEquip(selectedItemIndex);
-    }
-
-    public bool HasItem(ItemData item, int quantity)
-    {
-        return false;
     }
 }
